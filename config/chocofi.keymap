@@ -8,6 +8,9 @@
 /* activate bluetooth */
 #define CONFIG_WIRELESS 1
 
+/* use LINUX unicode */
+#define HOST_OS 1
+
 /* source the main keymap */
 #include "base.keymap"
 
