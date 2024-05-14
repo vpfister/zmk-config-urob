@@ -12,7 +12,10 @@
 
 #include "zmk-helpers/helper.h"
 #include "zmk-helpers/unicode-chars/greek.dtsi"
-#include "zmk-helpers/unicode-chars/german.dtsi"
+#include "zmk-helpers/unicode-chars/french.dtsi"
+
+ZMK_UNICODE_PAIR(fr_o_diaeresis,   N0, N0,  F, N6,    N0, N0,  D, N6)
+ZMK_UNICODE_PAIR(fr_a_diaeresis,   N0, N0,  E, N4,    N0, N0,  C, N4)
 
 #define DEF 0
 #define NAV 1
@@ -215,6 +218,25 @@ ZMK_MACRO(leader_sft, bindings = <&sk LSHFT &leader>;)
 #define HMR_EQUAL  &hmr LALT EQUAL
 #define HMR_STAR   &hmr LGUI STAR
 
+// unicode
+ZMK_UNICODE_PAIR(fr_o_trema,   N0, N0,  F, N6,    N0, N0,  D, N6)
+ZMK_UNICODE_PAIR(fr_a_trema,   N0, N0,  E, N4,    N0, N0,  C, N4)
+#define FR_E_TREMA &fr_e_diaeresis
+#define FR_E_CIRC &fr_e_circumflex
+#define FR_A_CIRC &fr_a_circumflex
+#define FR_C_CED &fr_c_cedilla
+#define FR_U_TREMA &fr_u_diaeresis
+#define FR_U_CIRC &fr_u_circumflex
+#define FR_I_TREMA &fr_i_diaeresis
+#define FR_I_CIRC &fr_i_circumflex
+#define FR_O_TREMA &fr_o_diaeresis
+#define FR_O_CIRC &fr_o_circumflex
+
+#define AGR_TREMA &kp RA(DQT)
+#define AGR_AIGU &kp RA(SQT)
+#define AGR_GRAVE &kp RA(GRAVE)
+#define AGR_CIRC &kp RA(CARET)
+
 /* Keymap */
 
 ZMK_CONDITIONAL_LAYER(FN MOUSE, SYS)  // FN + NUM --> SYS
@@ -291,16 +313,16 @@ ZMK_LAYER(sys,
 //╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰─────────────┴─────────────╯                                           ╰──────╯
 )
 
-ZMK_BASE_LAYER(Sys,
-//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-                               _BT_SEL_KEYS_                            ,   ___           ___           ___           ___           ___         ,
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    ___           ___           ___           ___           &bootloader ,   &bootloader   ___           ___           ___           ___         ,
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    ___           ___           ___           ___           &sys_reset  ,   &sys_reset    ___           ___           ___           ___         ,
-//╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯
-                                              ___           ___         ,   ___           ___
-//                                          ╰─────────────┴─────────────╯ ╰─────────────┴─────────────╯
+ZMK_LAYER(uc,
+//╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
+    X_LT     &fr_a_trema   &fr_ae        FR_E_TREMA    &fr_oe        ___             X_MT     AGR_AIGU      AGR_TREMA     FR_U_TREMA    FR_I_TREMA    FR_O_TREMA      X_RT
+//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+    X_LM     &fr_a_grave   FR_E_CIRC     &fr_e_acute   &fr_e_grave   ___             X_MM     AGR_GRAVE     AGR_CIRC      FR_U_CIRC     FR_I_CIRC     FR_O_CIRC       X_RM
+//├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├──────┤
+    X_LB     FR_A_CIRC     ___           FR_C_CED      ___           ___             X_MB     ___           ___           &fr_u_grave   ___           ___             X_RB
+//├──────┤ ╰─────────────┼─────────────┴─────────────┼─────────────┼─────────────┤ ├──────┤ ├─────────────┼─────────────┼─────────────┴───────────────────────────╯ ├──────┤
+    X_LH                                               ___           ___             X_MH     ___           ___                                                       X_RH
+//╰──────╯                                           ╰─────────────┴─────────────╯ ╰──────╯ ╰───────────────────────────╯                                           ╰──────╯
 )
 
 ZMK_BASE_LAYER(Mouse,
