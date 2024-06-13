@@ -262,7 +262,7 @@ ZMK_UNICODE_PAIR(fr_a_trema,   N0, N0,  E, N4,    N0, N0,  C, N4)
 
 /* Keymap */
 
-ZMK_CONDITIONAL_LAYER(FN MOUSE, SYS)  // FN + NUM --> SYS
+// ZMK_CONDITIONAL_LAYER(FN MOUSE, SYS)  // FN + NUM --> SYS
 
 ZMK_LAYER(base,
 //╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭──────╮
