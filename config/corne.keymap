@@ -3,7 +3,8 @@
 
 /* map Zen's extra keys */
 #define X_LH  &lt FN LGUI  // thumb row, left
-#define X_RH  &smart_mouse  // thumb row, right
+// #define X_RH  &smart_mouse  // thumb row, right
+#define X_RH  &lt SYS BSPC  // thumb row, right
 
 /* activate bluetooth */
 #define CONFIG_WIRELESS 1
